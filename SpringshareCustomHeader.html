@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<script src="https://kit.fontawesome.com/29abcc0d6d.js" crossorigin="anonymous"></script>
+	<title>Springshare Custom HTML Header/Footer TEST</title>
+	<link rel="icon" type="image/png" href="https://libapps.s3.amazonaws.com/customers/541/images/favicon.ico"/>
+<!--BUTTON STYLING-->
+<style>
+.button {
+  background-color: #ffb300;
+  border: none;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 2px 2px;
+  cursor: pointer;
+  transition-duration: 0.1s;
+}
+.button:hover {
+  background-color: #6e6d6d; 
+  color: white;
+</style>
+</head>
+	<divclass="container"><figure> <a href="https://www.fhsu.edu/library"> <img src="https://libapps.s3.amazonaws.com/sites/552/banner/LibGuides_-_Header_Options_20197.jpg" width = "100%" alt ="fhsu forsyth library banner"> </a> </figure></divclass="container">
+<body><h1> These elements would be in the header</h1>
+	<br>FIX THESE SOMEHOW KEEPING CSS/JS SEPARATE FROM HTML<br>
+<a class="btn btn-primary btn-sm" href="https://libanswers.fhsu.edu/index.php" target="_blank"> <em class="fas fa-comment-dots"></em> Ask A Librarian </a> &nbsp
+<a class="btn btn-primary btn-sm" href="https://libanswers.fhsu.edu/systems/" target="_blank"> <em class="fas fa-exclamation-triangle"></em> Known Issues </a></p>
+<a href="https://fhsuguides.fhsu.edu/az.php" target="_blank"><em class="fas fa-sort-alpha-down"></em> Research Databases</a>
+<a href="https://fhsuguides.fhsu.edu/?b=s" target="_blank"><em class="fas fa-compass"></em> Subject and Course Guides</a>
+	<h2>Search Everything</h2><p id="ldescriptor">Get started with a quick search of the catalog and multiple databases. Or try<strong> <a href="https://primo-tc-na01.hosted.exlibrisgroup.com/primo-explore/search?vid=FTHAYS&amp;mode=advanced&amp;sortby=rank&amp;lang=en_US" rel="noopener" target="_blank">advanced search.</a></strong></p>
+
+	    <form action="https://primo-tc-na01.hosted.exlibrisgroup.com/primo-explore/search?vid=FTHAYS&amp;sortby=rank&amp;lang=en_US" enctype="application/x-www-form-urlencoded; charset=utf-8" id="lsearchForm" method="get" name="lsearchForm" role="search" target="_blank"><input name="institution" type="hidden" value="FTHAYS" /><input name="vid" type="hidden" value="FTHAYS" /><input name="search_scope" type="hidden" id="scope-search" value="Everything" /><input id="primoQuery" name="query" type="hidden" /><input id="primoQueryTemp" name="queryTemp" title="Database Query" onkeypress="searchKeyPress;" size="25" type="text" value=" " /><input aria-label="search" alt="Search" id="go" title="Search Everything" type="submit" value="Search" />&nbsp;
+</form>
+    	</div>
+<script type="text/javascript">// <![CDATA[
+
+    function searchPrimo() {
+        document.getElementById("primoQuery").value = "any,contains," + document.getElementById("primoQueryTemp").value;
+    }
+    function clearActiveTabs() {
+        var tabs = document.getElementsByClassName("tab");
+        for(var i = 0; i < tabs.length; i++) {
+            //Ensure that each element with the class "tab" ONLY has class tab
+            tabs[i].setAttribute("class", "tab");
+        }
+    }
+    document.getElementById("lsearchForm").addEventListener("submit", searchPrimo);
+    
+    var tabs = document.getElementsByClassName("tab");
+    for(var i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener("click", function(e) {
+            clearActiveTabs();
+            this.setAttribute("class", "tab tab-active");
+            var info = linfo[this.getAttribute("data-lsearch")];
+            
+            var descriptor = document.getElementById("ldescriptor");
+            var scope = document.getElementById("scope-search");
+            var goBtn = document.getElementById("go");
+            
+            descriptor.innerHTML = info.descriptor;
+            scope.setAttribute("value", info.scope);
+            goBtn.setAttribute("title", info.title);
+        });
+    }
+// ]]></script>
+<script type="text/javascript">// <![CDATA[
+function toggleDiv(divId) {
+                $("#" + divId).toggle(500);
+            }
+// ]]></script></div></body>
+<hr>
+<footer> <h1> These elements would be in the footer</h1>
+<a href="https://www.facebook.com/FHSULibrary/"><img src="https://fhsu.edu/images/socmed_icons/facebook-48x48.png"></a>
+<a href="https://twitter.com/FHSULibrary"><img src="https://fhsu.edu/images/socmed_icons/twitter-48x48.png"></a>
+<a href="https://www.instagram.com/fhsulibrary/"><img src="https://fhsu.edu/images/socmed_icons/instagram-48x48.png"></a>
+
+</footer>
